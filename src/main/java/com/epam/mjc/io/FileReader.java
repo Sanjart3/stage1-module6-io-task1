@@ -1,16 +1,10 @@
 package com.epam.mjc.io;
 
 import java.io.*;
+import java.util.logging.Logger;
 
 
 public class FileReader {
-    public static void main(String[] args) {
-        FileReader fr = new FileReader();
-        File file = new File("D:\\java Praktikum\\stage1-module6-io-task1\\src\\main\\resources\\Profile.txt");
-        Profile profile = fr.getDataFromFile(file);
-        System.out.println(profile.toString());
-    }
-
     public Profile getDataFromFile(File file) {
         Profile profile = new Profile();
         try (BufferedReader bufferedReader = new BufferedReader(new java.io.FileReader(file))){
@@ -25,10 +19,8 @@ public class FileReader {
                 }
                 line = bufferedReader.readLine();
             }
-        }catch (FileNotFoundException e){
-            System.err.println(e);
-        }catch (IOException e){
-            System.err.println(e);
+        }catch (IOException exception){
+            Logger.getLogger(String.valueOf(exception));
         }
         return profile;
     }
