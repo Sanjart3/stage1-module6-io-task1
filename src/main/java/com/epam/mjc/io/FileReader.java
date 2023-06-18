@@ -5,6 +5,14 @@ import java.util.logging.Logger;
 
 
 public class FileReader {
+
+    public static void main(String[] args) {
+        File file = new File("D:\\java Praktikum\\stage1-module6-io-task1\\src\\resources\\Profile.txt");
+        FileReader fr = new FileReader();
+        Profile profile = fr.getDataFromFile(file);
+        System.out.println(profile.toString());
+    }
+
     public Profile getDataFromFile(File file) {
         Profile profile = new Profile();
         try (BufferedReader bufferedReader = new BufferedReader(new java.io.FileReader(file))){
@@ -16,6 +24,7 @@ public class FileReader {
                     case "Age": profile.setAge(Integer.valueOf(value.trim())); break;
                     case "Email": profile.setEmail(value.trim()); break;
                     case "Phone": profile.setPhone(Long.valueOf(value.trim()));
+                    default: continue;
                 }
                 line = bufferedReader.readLine();
             }
