@@ -14,8 +14,8 @@ public class FileReader {
                     case "Name": profile.setName(value.trim()); break;
                     case "Age": profile.setAge(Integer.valueOf(value.trim())); break;
                     case "Email": profile.setEmail(value.trim()); break;
-                    case "Phone": profile.setPhone(Long.valueOf(value.trim()));
-                    default:
+                    case "Phone": profile.setPhone(Long.valueOf(value.trim())); break;
+                    default: line=null;
                 }
                 line = bufferedReader.readLine();
             }
